@@ -1,5 +1,21 @@
 classDiagram
+    logement <|-- privé
     logement <|-- état
-    institutions <|-- privé
-    rentabilité <|-- finance
-    associatifs  : +int le réseau habitat ,associations locales
+    logement <|-- association
+    logement : +in propriétaire 
+    logement : +locataire
+    logement: +crous()
+    logement: +studapart()
+    class privé{
+      +entreprise
+      +locataire()
+      +agence immobiliére()
+    }
+    class état{
+      -details sur l'état physique
+      -date de mise a jour ()
+    }
+    class association{
+      +association de défense des droits 
+      +fédérations des actuers de solidarités ()
+    }
