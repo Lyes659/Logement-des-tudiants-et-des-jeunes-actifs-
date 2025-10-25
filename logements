@@ -1,1 +1,25 @@
-https://mermaid.live/edit#pako:eNo9kU1uwyAQha-CZlsnsuM_jLprt71A5c3Uxg4SBguGqm2aA_kcvlhxnIYNjL735o2GC3S2lyCg0-j9q8LR4dQaFo-2o5ykIfb8eziwdSGkHSjjSVEgZY3f4ezU57rs1EULfiitaF12OiiDppM7jim2U0hq8IwJ9qRigJbMrYuXGNg5WmMQSx66LUTbDrX0e4fWQAKjUz0IckEmMEk34VbCZVO0QOc4eAsiPns5YNDUQmuu0Tajebd2-nc6G8YziAG1j1WYeyR538FDIk0v3YsNhkBkTXHrAeICXyBOeXUsyowX-anK6ozXZQLfIMrm2FR5UfOU87zmTVpdE_i5xabHusp4yXmRNrwoyioB2Suy7u3-C9t1_QPsAINT
+```mermaid
+classDiagram
+    logement <|-- privé
+    logement <|-- état
+    logement <|-- association
+    logement : +in propriétaire 
+    logement : +locataire
+    logement : +crous()
+    logement : +studapart()
+    
+    class privé{
+      +entreprise
+      +locataire()
+      +agence immobiliére()
+    }
+    
+    class état{
+      -details sur l'état physique
+      -date de mise a jour()
+    }
+    
+    class association{
+      +association de défense des droits 
+      +fédérations des actuers de solidarités()
+    }
