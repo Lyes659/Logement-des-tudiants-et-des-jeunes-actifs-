@@ -22,5 +22,5 @@ classDiagram
     
     class association{
       +Union Nationale des Étudiants de France
-      +fédérations des actuers de solidarités()
+      
     }
