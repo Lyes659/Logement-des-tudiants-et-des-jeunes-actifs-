@@ -6,21 +6,21 @@ classDiagram
     logement <|-- association
     logement : +in propriétaire 
     logement : +locataire
-    logement : +crous()
-    logement : +studapart()
+    logement : +crous
+    logement : +studapart
     
     class privé{
       +entreprise
-      +locataire()
-      +agence immobiliére()
+      +locataire
+      +agence immobiliére
     }
     
     class état{
       -details sur l'état physique
-      -date de mise a jour()
+      -date de mise a jour
     }
     
     class association{
-      +association de défense des droits 
+      +Union Nationale des Étudiants de France
       +fédérations des actuers de solidarités()
     }
