@@ -7,8 +7,8 @@ classDiagram
         +int age
         +String universite
         +String email
-        +postulerLogement(Logement)
-        +payerLoyer(Paiement)
+        +postuler Logement
+        +payer Loyer
     }
 
     class JeuneActif {
@@ -18,8 +18,8 @@ classDiagram
         +int age
         +String emploi
         +String email
-        +postulerLogement(Logement)
-        +payerLoyer(Paiement)
+        +postuler Logement
+        +payer Loyer
     }
 
     class Logement {
@@ -35,8 +35,8 @@ classDiagram
         +int id
         +String nom
         +String email
-        +ajouterLogement(Logement)
-        +supprimerLogement(Logement)
+        +ajouter Logement
+        +supprimer Logement
     }
 
     class Agence {
@@ -44,8 +44,8 @@ classDiagram
         +String nom
         +String adresse
         +String contact
-        +gererLogement(Logement)
-        +gererContrat(Contrat)
+        +gerer Logement
+        +gerer Contrat
     }
 
     class Contrat {
@@ -53,7 +53,7 @@ classDiagram
         +Date dateDebut
         +Date dateFin
         +float montant
-        +signerContrat
+        +signer Contrat
     }
 
     class Paiement {
@@ -61,7 +61,7 @@ classDiagram
         +Date datePaiement
         +float montant
         +String moyen
-        +effectuerPaiement
+        +effectuer Paiement
     }
 
     %% Relations
