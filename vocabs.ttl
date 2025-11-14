@@ -1,0 +1,99 @@
+@prefix ex: <http://example.org/hebergement#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+### Ontologie
+ex:HebergementOntology a owl:Ontology ;
+    rdfs:label "Ontologie des hébergements et services liés"@fr ;
+    rdfs:comment "Vocabulaire regroupant les concepts principaux d’ACCO, TourPedia, GoodRelations et Schema.org pour modéliser l’hébergement."@fr .
+
+#########################################################
+### CLASSES
+#########################################################
+
+### Hébergement générique
+ex:Accommodation a owl:Class ;
+    rdfs:label "Hébergement"@fr ;
+    rdfs:comment "Un lieu destiné à héberger des personnes (hôtel, maison de vacances, chambre, suite...)."@fr .
+
+### Chambre individuelle
+ex:Room a owl:Class ;
+    rdfs:label "Chambre"@fr ;
+    rdfs:comment "Unité de logement individuelle faisant partie d’un hébergement."@fr ;
+    rdfs:subClassOf ex:Accommodation .
+
+### Types de chambres
+ex:SingleRoom a owl:Class ;
+    rdfs:label "Chambre simple"@fr ;
+    rdfs:subClassOf ex:Room .
+
+ex:Suite a owl:Class ;
+    rdfs:label "Suite"@fr ;
+    rdfs:subClassOf ex:Room .
+
+### Lieu touristique / point d'intérêt (TourPedia)
+ex:TouristPlace a owl:Class ;
+    rdfs:label "Lieu touristique"@fr .
+
+#########################################################
+### PROPRIÉTÉS
+#########################################################
+
+### Propriétés issues d'ACCO
+ex:hasAccommodationRoom a owl:ObjectProperty ;
+    rdfs:label "a une chambre d’hébergement"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range ex:Room .
+
+ex:totalRoom a owl:DatatypeProperty ;
+    rdfs:label "Nombre total de chambres"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range rdfs:Literal .
+
+ex:totalBed a owl:DatatypeProperty ;
+    rdfs:label "Nombre total de lits"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range rdfs:Literal .
+
+ex:hasAccommodationOwner a owl:ObjectProperty ;
+    rdfs:label "a pour propriétaire"@fr .
+
+ex:hasOfferedServiceDescriptionFeature a owl:DatatypeProperty ;
+    rdfs:label "Caractéristique du service offert"@fr .
+
+### Propriétés TourPedia
+ex:featureName a owl:DatatypeProperty ;
+    rdfs:label "Nom de la caractéristique"@fr .
+
+### Propriétés GoodRelations
+ex:hasBusinessFunction a owl:DatatypeProperty ;
+    rdfs:label "Fonction commerciale"@fr .
+
+ex:accommodationRoomType a owl:DatatypeProperty ;
+    rdfs:label "Type de chambre"@fr .
+
+### Propriétés Schema.org
+ex:amenityFeature a owl:ObjectProperty ;
+    rdfs:label "Service / équipement"@fr .
+
+ex:numberOfRooms a owl:DatatypeProperty ;
+    rdfs:label "Nombre de pièces"@fr .
+
+ex:maximumAttendeeCapacity a owl:DatatypeProperty ;
+    rdfs:label "Capacité maximale"@fr .
+
+#########################################################
+### EXEMPLES D’INSTANCES (optionnel)
+#########################################################
+
+ex:HotelMontpellier a ex:Accommodation ;
+    rdfs:label "Hôtel Montpellier Centre"@fr ;
+    ex:totalRoom 80 ;
+    ex:totalBed 120 ;
+    ex:hasBusinessFunction "location" ;
+    ex:numberOfRooms 80 .
+
+ex:Chambre101 a ex:SingleRoom ;
+    rdfs:label "Chambre 101"@fr ;
+    ex:featureName "Salle de bain privative" .
