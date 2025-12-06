@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livrable Interactif - Entrepôts d'Aubervilliers</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; }
+        #map { height: 400px; margin-bottom: 20px; }
+        .diagram { display: flex; justify-content: space-around; margin-bottom: 20px; }
+        .stage { text-align: center; width: 150px; }
+        .stage div { background-color: #4CAF50; color: white; padding: 20px; margin: 10px 0; border-radius: 10px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background-color: #4CAF50; color: white; }
+        tr:hover { background-color: #f1f1f1; }
+    </style>
+</head>
+<body>
+
+<h1>Livrable Interactif : Entrepôts d'Aubervilliers</h1>
+
+<h2>1. Carte interactive des entrepôts</h2>
+<div id="map"></div>
+
+<h2>2. Schéma animé du fonctionnement interne d'un entrepôt</h2>
+<div class="diagram">
+    <div class="stage"><div>Réception</div></div>
+    <div class="stage"><div>Stockage</div></div>
+    <div class="stage"><div>Préparation</div></div>
+    <div class="stage"><div>Contrôle qualité</div></div>
+    <div class="stage"><div>Expédition</div></div>
+</div>
+
+<h2>3. Tableau comparatif interactif</h2>
+<table id="warehouseTable">
+    <thead>
+        <tr>
+            <th>Nom / Type</th>
+            <th>Architecture</th>
+            <th>Activités</th>
+            <th>Utilisation</th>
+            <th>Fonctionnement</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Entrepôt A</td>
+            <td>Bâtiment métallique, toits plats, quais pour camions</td>
+            <td>Stockage, préparation de commandes, distribution</td>
+            <td>Produits alimentaires et textiles</td>
+            <td>Réception → Stockage → Préparation → Expédition</td>
+        </tr>
+        <tr>
+            <td>Entrepôt B</td>
+            <td>Béton, grandes portes, racks intérieurs</td>
+            <td>Stockage et distribution rapide</td>
+            <td>Électronique et matériel industriel</td>
+            <td>Réception → Stockage → Préparation → Contrôle → Expédition</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // Initialisation de la carte
+    const map = L.map('map').setView([48.912, 2.384], 14); // Aubervilliers
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Entrepôts avec popup descriptif
+    const warehouses = [
+        {name: "Entrepôt A", coords: [48.913, 2.384], desc: "Stockage de produits alimentaires et textiles. Préparation et expédition."},
+        {name: "Entrepôt B", coords: [48.911, 2.385], desc: "Stockage électronique et matériel industriel. Organisation interne optimisée."}
+    ];
+
+    warehouses.forEach(wh => {
+        L.marker(wh.coords).addTo(map)
+            .bindPopup(`<b>${wh.name}</b><br>${wh.desc}`);
+    });
+</script>
+
+</body>
+</html>
