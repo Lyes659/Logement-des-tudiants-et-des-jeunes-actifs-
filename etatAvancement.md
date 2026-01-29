@@ -1,40 +1,34 @@
 ```mermaid
 gantt
-    title Etat d'avancement de l'enquete sur le logement des étudiants et jeunes actifs
-    dateFormat  YYYY-MM-DD
-    excludes    weekends
+    title Etat d avancement de l enquete logement etudiants et jeunes actifs
+    dateFormat YYYY-MM-DD
+    excludes weekends
 
-    %% Travaux préliminaires et préparation
     section Travaux preliminaires
-    Lecture du rapport et recherche documentaire        :done, t1, 2025-11-10, 3d
-    Structuration journal de bord et prise de notes    :done, t2, after t1, 2d
-    Finalisation 5W+1 et problématique V2             :done, t3, after t2, 2d
-    Identification du terrain et contacts locaux       :done, t4, after t3, 3d
+    Lecture rapport et recherche documentaire     :done, t1, 2025-11-10, 3d
+    Journal de bord et prise de notes              :done, t2, 2025-11-13, 2d
+    Finalisation 5W+1 et problematique V2          :done, t3, 2025-11-17, 2d
+    Identification du terrain                     :done, t4, 2025-11-19, 3d
 
-    %% Questionnaire
     section Questionnaire
-    Élaboration questionnaire                          :done, q1, 2025-11-15, 5d
-    Diffusion questionnaire (résidence/Facebook/WhatsApp) :active, q2, after q1, 7d
-    Distribution photocopies aux connaissances        :done, q3, after q2, 3d
-    Saisie des questions et réponses sur LimeSurvey   :todo, q4, after q2, 10d
+    Elaboration du questionnaire                  :done, q1, 2025-11-24, 5d
+    Diffusion questionnaire reseaux et residence  :active, q2, 2025-12-01, 7d
+    Photocopies distribuees aux connaissances     :done, q3, 2025-12-01, 3d
+    Saisie questions et reponses LimeSurvey       :todo, q4, 2025-12-08, 10d
 
-    %% Entretiens
     section Entretiens
-    Premiers entretiens étudiants                     :done, e1, after q2, 5d
-    Entretiens programmés jeunes actifs               :todo, e2, after e1, 7d
-    Entretiens supplémentaires résidence              :todo, e3, after e2, 5d
-    Enregistrements audio/vidéo                        :todo, e4, after e3, 5d
-    Témoignage personnel (audio/vidéo)                :todo, e5, after e4, 3d
+    Entretiens etudiants                          :done, e1, 2025-12-01, 5d
+    Entretiens jeunes actifs                      :todo, e2, 2025-12-08, 7d
+    Entretiens residence                          :todo, e3, 2025-12-15, 5d
+    Enregistrements audio video                   :todo, e4, 2025-12-22, 5d
+    Temoignage personnel                          :todo, e5, 2025-12-29, 3d
 
-    %% Analyse et synthèse
     section Analyse
-    Analyse préliminaire questionnaire               :todo, a1, after q4, 5d
-    Analyse des entretiens et verbatims              :todo, a2, after e5, 7d
-    Croisement des données                            :todo, a3, after a2, 3d
-    Rédaction synthèse finale                         :todo, a4, after a3, 5d
+    Analyse questionnaire                         :todo, a1, 2026-01-05, 5d
+    Analyse entretiens                            :todo, a2, 2026-01-12, 7d
+    Croisement des donnees                        :todo, a3, 2026-01-21, 3d
+    Redaction synthese finale                    :todo, a4, 2026-01-26, 5d
 
-    %% Clôture
     section Cloture
-    Fin de l'enquête                                  :milestone, end, after a4, 0d
-
+    Fin de l enquete                              :milestone, m1, 2026-02-02, 0d
 ```
