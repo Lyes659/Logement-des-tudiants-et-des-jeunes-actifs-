@@ -1,33 +1,192 @@
-Nom du vocabulaire,Préfixe,URI,Thématique principale,Utilisation dans le projet
-Accommodation,ex,http://example.org/hebergement#Accommodation,Hébergement,"Modéliser tout type d’hébergement destiné à accueillir des personnes (hôtel, maison, appartement, camping)"
-Hotel,ex,http://example.org/hebergement#Hotel,Hébergement spécialisé,"Identifier les hôtels et leurs caractéristiques"
-HolidayHome,ex,http://example.org/hebergement#HolidayHome,Hébergement spécialisé,"Décrire les maisons de vacances et locations saisonnières"
-Camping,ex,http://example.org/hebergement#Camping,Hébergement spécialisé,"Représenter les campings et leurs services"
-Room,ex,http://example.org/hebergement#Room,Chambre,"Modéliser les unités internes des hébergements"
-SingleRoom,ex,http://example.org/hebergement#SingleRoom,Chambre,"Identifier les chambres simples et leur capacité"
-DoubleRoom,ex,http://example.org/hebergement#DoubleRoom,Chambre,"Identifier les chambres doubles et leur capacité"
-Suite,ex,http://example.org/hebergement#Suite,Chambre,"Décrire les suites et équipements associés"
-Service,ex,http://example.org/hebergement#Service,Services & équipements,"Modéliser les services proposés par les hébergements (Wi-Fi, petit déjeuner…)"
-Amenity,ex,http://example.org/hebergement#Amenity,Services & équipements,"Décrire les équipements disponibles dans les hébergements et chambres"
-Owner,ex,http://example.org/hebergement#Owner,Acteurs,"Identifier le propriétaire d’un hébergement"
-TouristPlace,ex,http://example.org/hebergement#TouristPlace,Lieux touristiques,"Localiser les points d’intérêt ou attractions proches des hébergements"
-hasAccommodationRoom,ex,http://example.org/hebergement#hasAccommodationRoom,Structure & Relations,"Relier un hébergement à ses chambres"
-hasAccommodationOwner,ex,http://example.org/hebergement#hasAccommodationOwner,Structure & Relations,"Identifier le propriétaire d’un hébergement"
-hasTouristPlaceNearby,ex,http://example.org/hebergement#hasTouristPlaceNearby,Structure & Relations,"Associer un hébergement à un lieu touristique proche"
-offersService,ex,http://example.org/hebergement#offersService,Services & équipements,"Décrire les services offerts par un hébergement"
-hasAmenity,ex,http://example.org/hebergement#hasAmenity,Services & équipements,"Identifier les équipements disponibles dans l’hébergement ou la chambre"
-hasOfferedServiceDescriptionFeature,ex,http://example.org/hebergement#hasOfferedServiceDescriptionFeature,Services & équipements,"Décrire les caractéristiques d’un service offert"
-totalRoom,ex,http://example.org/hebergement#totalRoom,Caractéristiques quantitatives,"Nombre total de chambres dans un hébergement"
-numberOfRooms,ex,http://example.org/hebergement#numberOfRooms,Caractéristiques quantitatives,"Nombre de pièces d’un hébergement"
-totalBed,ex,http://example.org/hebergement#totalBed,Caractéristiques quantitatives,"Nombre total de lits dans une chambre"
-capacity,ex,http://example.org/hebergement#capacity,Caractéristiques quantitatives,"Capacité d’accueil d’un hébergement"
-maximumAttendeeCapacity,ex,http://example.org/hebergement#maximumAttendeeCapacity,Caractéristiques quantitatives,"Capacité maximale d’occupation"
-price,ex,http://example.org/hebergement#price,Prix & offre,"Prix d’une chambre ou d’un hébergement"
-hasBusinessFunction,ex,http://example.org/hebergement#hasBusinessFunction,Prix & offre,"Fonction commerciale ou type d’offre"
-accommodationRoomType,ex,http://example.org/hebergement#accommodationRoomType,Prix & offre,"Type de chambre (simple, double, suite…)"
+@prefix ex: <http://example.org/hebergement#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-HotelMontpellier,ex,http://example.org/hebergement#HotelMontpellier,Hôtel,"Exemple d’un hôtel avec 80 chambres, capacité 200, services et équipements"
-Chambre101,ex,http://example.org/hebergement#Chambre101,Chambre,"Exemple d’une chambre simple avec 1 lit et salle de bain privative"
-Wifi,ex,http://example.org/hebergement#Wifi,Équipement,"Exemple d’équipement disponible : Wi-Fi gratuit"
-PetitDejeuner,ex,http://example.org/hebergement#PetitDejeuner,Service,"Exemple de service offert : petit déjeuner inclus"
-SalleDeBainPrivative,ex,http://example.org/hebergement#SalleDeBainPrivative,Équipement,"Exemple d’équipement : salle de bain privative"
+### Ontologie
+ex:HebergementOntology a owl:Ontology ;
+    rdfs:label "Ontologie des hébergements et services liés"@fr ;
+    rdfs:comment "Version enrichie du vocabulaire basé sur ACCO, GoodRelations, Schema.org et TourPedia."@fr .
+
+#########################################################
+### CLASSES PRINCIPALES
+#########################################################
+
+### Hébergement (classe générique)
+ex:Accommodation a owl:Class ;
+    rdfs:label "Hébergement"@fr ;
+    rdfs:comment "Tout type d’hébergement destiné à recevoir des personnes (hôtel, maison, appartement, camping)."@fr .
+
+### Hébergements spécialisés
+ex:Hotel a owl:Class ;
+    rdfs:label "Hôtel"@fr ;
+    rdfs:subClassOf ex:Accommodation .
+
+ex:HolidayHome a owl:Class ;
+    rdfs:label "Maison de vacances"@fr ;
+    rdfs:subClassOf ex:Accommodation .
+
+ex:Camping a owl:Class ;
+    rdfs:label "Camping"@fr ;
+    rdfs:subClassOf ex:Accommodation .
+
+### Chambre (unité interne)
+ex:Room a owl:Class ;
+    rdfs:label "Chambre"@fr ;
+    rdfs:subClassOf ex:Accommodation ;
+    rdfs:comment "Unité interne d’un hébergement."@fr .
+
+ex:SingleRoom a owl:Class ;
+    rdfs:label "Chambre simple"@fr ;
+    rdfs:subClassOf ex:Room .
+
+ex:DoubleRoom a owl:Class ;
+    rdfs:label "Chambre double"@fr ;
+    rdfs:subClassOf ex:Room .
+
+ex:Suite a owl:Class ;
+    rdfs:label "Suite"@fr ;
+    rdfs:subClassOf ex:Room .
+
+### Services et équipements
+ex:Service a owl:Class ;
+    rdfs:label "Service"@fr ;
+    rdfs:comment "Service offert par un hébergement (Wi-Fi, ménage, petit déjeuner…)."@fr .
+
+ex:Amenity a owl:Class ;
+    rdfs:label "Équipement"@fr ;
+    rdfs:comment "Équipement fourni dans un hébergement ou une chambre."@fr .
+
+### Acteurs
+ex:Owner a owl:Class ;
+    rdfs:label "Propriétaire"@fr .
+
+### Lieux touristiques
+ex:TouristPlace a owl:Class ;
+    rdfs:label "Lieu touristique"@fr ;
+    rdfs:comment "Point d’intérêt ou lieu touristique lié à un hébergement."@fr .
+
+#########################################################
+### PROPRIÉTÉS : STRUCTURE & RELATIONS
+#########################################################
+
+### Contient des chambres
+ex:hasAccommodationRoom a owl:ObjectProperty ;
+    rdfs:label "contient une chambre"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range ex:Room .
+
+### Propriétaire
+ex:hasAccommodationOwner a owl:ObjectProperty ;
+    rdfs:label "a pour propriétaire"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range ex:Owner .
+
+### Localisation
+ex:hasTouristPlaceNearby a owl:ObjectProperty ;
+    rdfs:label "a un lieu touristique proche"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range ex:TouristPlace .
+
+#########################################################
+### PROPRIÉTÉS : SERVICES & ÉQUIPEMENTS
+#########################################################
+
+### Service offert
+ex:offersService a owl:ObjectProperty ;
+    rdfs:label "offre le service"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range ex:Service .
+
+### Équipement
+ex:hasAmenity a owl:ObjectProperty ;
+    rdfs:label "possède l’équipement"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range ex:Amenity .
+
+### Description d’un service
+ex:hasOfferedServiceDescriptionFeature a owl:DatatypeProperty ;
+    rdfs:label "caractéristique du service"@fr ;
+    rdfs:range xsd:string .
+
+#########################################################
+### PROPRIÉTÉS : CARACTÉRISTIQUES QUANTITATIVES
+#########################################################
+
+ex:totalRoom a owl:DatatypeProperty ;
+    rdfs:label "Nombre total de chambres"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range xsd:integer .
+
+ex:numberOfRooms a owl:DatatypeProperty ;
+    rdfs:label "Nombre de pièces"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range xsd:integer .
+
+ex:totalBed a owl:DatatypeProperty ;
+    rdfs:label "Nombre total de lits"@fr ;
+    rdfs:domain ex:Room ;
+    rdfs:range xsd:integer .
+
+ex:capacity a owl:DatatypeProperty ;
+    rdfs:label "Capacité d’accueil"@fr ;
+    rdfs:domain ex:Accommodation ;
+    rdfs:range xsd:integer .
+
+ex:maximumAttendeeCapacity a owl:DatatypeProperty ;
+    rdfs:label "Capacité maximale d’occupation"@fr ;
+    rdfs:range xsd:integer .
+
+#########################################################
+### PROPRIÉTÉS : PRIX ET OFFRE
+#########################################################
+
+ex:price a owl:DatatypeProperty ;
+    rdfs:label "Prix"@fr ;
+    rdfs:comment "Prix d’une chambre ou d’un hébergement."@fr ;
+    rdfs:range xsd:decimal .
+
+ex:hasBusinessFunction a owl:DatatypeProperty ;
+    rdfs:label "Fonction commerciale"@fr ;
+    rdfs:range xsd:string .
+
+ex:accommodationRoomType a owl:DatatypeProperty ;
+    rdfs:label "Type de chambre"@fr ;
+    rdfs:domain ex:Room ;
+    rdfs:range xsd:string .
+
+#########################################################
+### PROPRIÉTÉS LEXICALES (TourPedia)
+#########################################################
+
+ex:featureName a owl:DatatypeProperty ;
+    rdfs:label "Nom de la caractéristique"@fr ;
+    rdfs:range xsd:string .
+
+#########################################################
+### INSTANCES EXEMPLE
+#########################################################
+
+ex:HotelMontpellier a ex:Hotel ;
+    rdfs:label "Hôtel Montpellier Centre"@fr ;
+    ex:totalRoom 80 ;
+    ex:capacity 200 ;
+    ex:offersService ex:PetitDejeuner ;
+    ex:hasAmenity ex:Wifi ;
+    ex:hasBusinessFunction "location" .
+
+ex:Chambre101 a ex:SingleRoom ;
+    rdfs:label "Chambre 101"@fr ;
+    ex:totalBed 1 ;
+    ex:accommodationRoomType "single" ;
+    ex:hasAmenity ex:SalleDeBainPrivative .
+
+ex:Wifi a ex:Amenity ;
+    rdfs:label "Wi-Fi gratuit"@fr .
+
+ex:PetitDejeuner a ex:Service ;
+    rdfs:label "Petit déjeuner inclus"@fr .
+
+ex:SalleDeBainPrivative a ex:Amenity ;
+    rdfs:label "Salle de bain privative"@fr .
