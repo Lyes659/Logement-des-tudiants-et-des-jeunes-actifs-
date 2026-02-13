@@ -23,7 +23,7 @@ d'autres agents.
 
 ## Annotations simulées
 
-### 🟨 Je me questionne
+###  Je me questionne
 
 -   « Il faut s'interroger sur ce qu'est une valeur ou un cadre éthique
     codé dans une machine. »\
@@ -34,7 +34,7 @@ d'autres agents.
     décision d'un agent. »\
     → Cette distinction est-elle applicable à des IA réelles ?
 
-### 🔴 Je ne suis pas d'accord
+###  Je ne suis pas d'accord
 
 -   « Une quantification non fondée sur une réalité objective n'a aucun
     sens. »\
@@ -45,7 +45,7 @@ d'autres agents.
     → Une IA peut simuler des comportements moraux utiles pour la
     société.
 
-### 🟢 Tout à fait d'accord
+###  Tout à fait d'accord
 
 -   « Il existe un gouffre entre normes juridiques, normes techniques et
     valeurs. »\
@@ -54,7 +54,7 @@ d'autres agents.
 -   « L'éthique dépend du contexte social, économique ou politique. »\
     → Important pour comprendre les risques et usages de l'IA.
 
-### 🔵 Références importantes
+###  Références importantes
 
 -   Le cadre ETHICAA permettant à un agent d'intégrer des principes
     éthiques.
